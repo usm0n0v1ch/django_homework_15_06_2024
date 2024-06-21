@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <style>
+        .container {
+        display:flex;
+        gap:100px;
+        }
+        .book {
+        margin:20px;
+        padding:20px;
+        width:700px;
+        height:500px;
+        border:2px solid black;
+        }
+        .category {
+        margin:20px;
+        padding:20px;
+        width:400px;
+        height:250px;
+        border:2px solid black;
+        }
+        .author {
+        margin:20px;
+        padding:20px;
+        width:400px;
+        height:250px;
+        border:2px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="book">
+        <h1>Книги</h1>
+        <a href=" {% url 'book_add' %}">Добавить книгу</a>
+        <ul>
+            {% for book in books %}
+            <li>
+                <a href="{% url 'books' pk=book.pk %}">{{ book.name }}</a>
+                <a href="{% url 'book_edit' pk=book.pk %}">Редактировать</a>
+                <a href="{% url 'book_delete' pk=book.pk %}">Удалить</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="category_and_author">
+        <div class="category">
+            <h1>Категории</h1>
+            <a href=" {% url 'category_add' %}">Добавить категорию</a>
+            <ul>
+                {% for category in categories %}
+                <li>
+                    <a href="{% url 'categories' pk=category.pk %}">{{ category.name }}</a>
+                    <a href="{% url 'category_edit' pk=category.pk %}">Редактировать</a>
+                    <a href="{% url 'category_delete' pk=category.pk %}">Удалить</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="author">
+            <h1>Авторы</h1>
+            <a href=" {% url 'author_add' %}">Добавить автора</a>
+            <ul>
+                {% for author in authors %}
+                <li>
+                    <a href="{% url 'authors' pk=author.pk %}">{{ author.name }}</a>
+                    <a href="{% url 'author_edit' pk=author.pk %}">Редактировать</a>
+                    <a href="{% url 'author_delete' pk=author.pk %}">Удалить</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

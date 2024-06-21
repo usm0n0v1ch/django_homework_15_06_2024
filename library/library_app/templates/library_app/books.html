@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title}}</title>
+</head>
+<body>
+<h1>Книга: {{ book.name }}</h1>
+<p>{{ book.description }}</p>
+<p>{{ book.author }}:<img src="{{ book.author.image.url }}" style="max-width: 300px;"></p>
+<p>{{ book.category }}:<img src="{{ book.category.image.url }}" ></p>
+<a href="{% url 'home' %}">Назад</a>
+</body>
+</html>
